@@ -68,7 +68,7 @@ section {
 }
 .main .box {
     height: auto;
-    min-height: 330px;
+    min-height: 350px;
     background-color: #fff;
     border: 2px solid #eeeeee;
 }
