@@ -27,12 +27,13 @@ section {
 .nav-bar li a {
     text-decoration: none;
     color: #fff;
+    padding: 20px 25px;
+    display: block;
 }
 .nav-bar li {
     background-color: #155d83;
     margin-bottom: 2px;
     font-size: 1.86rem;
-    padding: 20px 25px;
 
     -webkit-transition: background 0.2s ease-out;
     -moz-transition: background 0.2s ease-out;
