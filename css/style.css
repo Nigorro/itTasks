@@ -1,0 +1,273 @@
+body{
+    background-color:#f6f6f6;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    width: 1100px;
+}
+html { font-size: 10px; }
+/*Left nav bar*/
+html, body, .left-nav{
+    height: 100%;
+}
+section {
+    display: inline;
+    float: left;
+}
+.left-nav {
+    background-color: #1d71a1;
+    width: 20%;
+    min-width: 210px;
+}
+.nav-bar {
+    padding-left: 0px;
+    margin: 0;
+    list-style: none;
+    color: #fff;
+}
+.nav-bar li a {
+    text-decoration: none;
+    color: #fff;
+}
+.nav-bar li {
+    background-color: #155d83;
+    margin-bottom: 2px;
+    font-size: 1.86rem;
+    padding: 20px 25px;
+
+    -webkit-transition: background 0.2s ease-out;
+    -moz-transition: background 0.2s ease-out;
+    -ms-transition: background 0.2s ease-out;
+    -o-transition: background 0.2s ease-out;
+    transition: background 0.2s ease-out;
+}
+.nav-bar li:hover {
+    background-color: #085177;
+}
+.nav-bar .active{
+    background-color:#fe7800;
+}
+.nav-bar .active:hover {
+    background-color: #ED7000;
+}
+.logo {
+    width: 116px;
+    margin: auto;
+    padding: 25px 0;
+    background-repeat: no-repeat;
+}
+
+
+/*Main content*/
+.main {
+    width: 80%;
+}
+.container {
+    margin: 15px 0 0 30px;
+    width: 810px;
+    
+}
+.main .box {
+    height: auto;
+    min-height: 330px;
+    background-color: #fff;
+    border: 2px solid #eeeeee;
+}
+.main-title{
+    width: 100%;
+    border-bottom: 2px solid #08c6ba;
+    text-transform: uppercase;
+    color: #082551;
+    
+}
+.main-title h1 {
+    padding: 15px 0 15px 20px;
+    margin: 0;
+    font-size: 1.86rem;
+    font-weight: 300;
+}
+header h1 span{
+    float: right;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+/*Tabs*/
+.tabs {
+    font-weight: 200;
+    list-style: none;
+    padding: 0 13px;
+    height: 26px;
+}
+.tabs li{
+    font-size: 1.86rem;
+    width: 33%;
+    display: inline;
+    float: left;
+    text-align: center;
+    background-color: #dcdcdc;
+    color: #155d83;
+    margin-right: 2px;
+    padding: 5px 0;
+}
+.tabs a {
+    text-decoration: none;
+    color: #155d83;
+}
+.tabs .active  {
+    background-color: #19d3c5;
+}
+.tabs .active a {
+    color: #fff;
+}
+
+/*upper_panel*/
+.upper_panel{
+    margin-bottom: 15px;
+    display: block;
+    height: 35px;
+}
+.panel {
+    list-style: none;
+    padding: 0;
+}
+.panel li{
+    display: inline;
+    float: right;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+.panel li:last-child{
+    float: left;
+    margin-left: 0;
+}
+.panel li a{
+    text-decoration: none;
+}
+.search input {
+    width: 135px;
+    height: 25px;
+    border: 2px solid #465774;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 25px;
+}
+.search img {
+    position: relative;
+    left: -28px;
+    top: 2px;
+}
+.text-alert {
+    position: relative;
+    left: -10px;
+    top: 3px;
+    background: #e83348;
+    color: #fff;
+    padding: 3px 4px 1px 3px;
+    font-size: 1.46rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/*Custom select */
+
+select {
+    width: 200px;
+    border: none;
+    height: 22px;   
+    line-height: 22px;
+    position: relative; 
+    background: none;
+}
+
+.select-custom {
+    border: 1px solid #e5e5e5;
+    background: #eee;
+    width: 180px;       
+    overflow: hidden;     
+    display: inline-block;
+    position: relative;   
+}
+
+.select-button {
+    background: url('../img/arrow.png') center center no-repeat;      
+    width: 25px;
+    position: absolute;     
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 50;        
+}
+.white {
+    background:#fff;
+}
+.width1{
+    width:68px;
+}
+.width1 select {
+    width: 88px!important;
+}
+.width2{
+   width: 113px;
+   margin-right: 0 !important;
+}
+.width2 select {
+    width: 133px !important;
+}
+.width3{
+    width:100%;
+}
+.width3 select {
+    width: 105% !important;
+}
+/*wrapper*/
+
+.wrapper {
+    margin: 35px 20px 10px 20px;
+}
+
+.title h1 {
+    font-size: 1.2rem;
+    color: #455974;
+}
+.data-continer input {
+    border: 1px solid #e5e5e5;
+    position: relative;
+    top: -8.5px;
+    height: 22px;
+    margin-right: 10px;
+}
+
+.data-continer select, .data-continer .select-custom {
+    height: 24px;
+    margin-right: 10px;
+}
+.data-continer .search input{
+    border-radius: 0;
+    width: 100%;
+    padding: 0;
+}
+.data-continer .search img {
+    position: relative;
+    left: 390px;
+    top: -27px;
+}
+.article-inline {
+    float: left;
+    margin-right: 50px;
+}
+
+
+
+
+.first_collum, .second_collum{
+    float: left;
+}
+.first_collum {
+    width: 285px;
+    margin-right: 70px;
+    float: left;
+}
+.second_collum{
+    float: left;
+    width: 410px;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Медицинская форма</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <style type="text/css">
+      .highcharts-container { overflow: visible !important; }
+    </style>
+    <script type="text/javascript">
+      $(function () {
+        var timeLine = ['1'], sys, mbp, dia, time;
+        self.timeLine = [];
+        var xhReq = new XMLHttpRequest();
+        xhReq.open("GET", 'data.json', false);
+        xhReq.send(null);
+        var jsonObject = JSON.parse(xhReq.responseText);
+        console.log(jsonObject);
+        var getData = function(json) {
+          var item, outList = {
+            times: [],
+            SYS: [],
+            MBP: [],
+            DIA: []
+          };
+          defVal = {
+            times: [],
+            SYS: [],
+            MBP: [],
+            DIA: []
+          };
+          for (item in json) {
+            var currentTime = '' + json[item].TIME_h + json[item].TIME_m;
+            if (json[item].TIME_h >= 24) {
+              outList.times.push(json[item].TIME_h - 24 + ':' + json[item].TIME_m);
+              defVal.times.push(json[item].TIME_h - 24 + ':' + json[item].TIME_m);
+            } else {
+              outList.times.push(json[item].TIME_h + ':' + json[item].TIME_m);
+              defVal.times.push(json[item].TIME_h + ':' + json[item].TIME_m);
+            };
+            if ( currentTime >= 900  && currentTime <= 2330) {
+              defVal.SYS.push(140);
+              defVal.MBP.push(100);
+              defVal.DIA.push(80);
+            } else if ( currentTime >= 2331  ||  currentTime <= 859  ){
+              console.log(currentTime);
+              defVal.SYS.push(130);
+              defVal.MBP.push(90);
+              defVal.DIA.push(70);
+            };
+            outList.SYS.push(json[item].SYS);
+            outList.MBP.push(json[item].MBP);
+            outList.DIA.push(json[item].DIA);
+          };
+          return outList;
+
+        }
+
+        var dataGraph = getData(jsonObject);
+        console.log(dataGraph.times);
+        $('#container').highcharts({
+                chart: {
+                  height: 600,
+                  width: 3200
+                },
+                title: {
+                    text: 'График артериального давления',
+                    x: 0 //center
+                },
+                subtitle: {
+                    text: 'подзаголовок',
+                    x: -20
+                },
+                xAxis: {
+                    categories: dataGraph.times,
+                    zoomType: 'x'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Давление в мм. рт. ст'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }],
+                },
+                tooltip: {
+                    valueSuffix: 'мм. рт. ст'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'Верхнее давление',
+                    data: dataGraph.SYS
+                }, {
+                    name: 'Cреднее давление',
+                    data: dataGraph.MBP
+                }, {
+                    name: 'Нижнее давление',
+                    data: dataGraph.DIA
+                }
+                //  {
+                //     name: 'Пороговое верхнее',
+                //     data: defVal.SYS,
+                //     color: '#000'
+                // }, {
+                //     name: 'Пороговое Cреднее',
+                //     data: defVal.MBP,
+                //     color: '#000'
+                // }, {
+                //     name: 'Пороговое Нижнее',
+                //     data: defVal.DIA,
+                //     color: '#000'
+                // }
+                ]
+            });
+        });
+    </script>
+
+  </head>
+  <body>
+    <section class='left-nav'>
+      <div class="logo">
+        <a href="index.html"><img src="img/logo.png"></a>
+      </div>
+      <nav>
+        <ul class="nav-bar">
+          <li><a href="#">Измерения</a></li>
+          <li><a href="#">Врачи</a></li>
+          <li><a href="#">Медкарта</a></li>
+          <li><a href="#">Чаты</a></li>
+          <li><a href="#">Где я нахожусь?</a></li>
+          <li class="active"><a href="graph.html">График</a></li>
+          <li><a href="angular.html">Angular</a></li>
+        </ul>
+      </nav>
+    </section>
+    <section class='main'>
+      <div class="container">
+        <div class="upper_panel">
+          <ul class="panel">
+            <li><a href=""><img src="img/panel/avatar.png"></a></li>
+            <li><a href=""><img src="img/panel/service.png"></a></li>
+            <li><a href=""><img src="img/panel/set_up.png"></a></li>
+            <li><a href=""><img src="img/panel/help.png"></a></li>
+            <li><a href=""><img src="img/panel/news.png"></a><span class='text-alert'>1</span></li>
+            <li><a href=""><img src="img/panel/support.png"></a></li>
+            <li><a href=""><img src="img/panel/bell.png"></a><span class='text-alert'>25</span></li>
+            <li><div class="search"> <input type="text" size="20"> <img src="img/panel/search.png"></div></li>
+            <li class="alert"><a href=""><img src="img/panel/alert.png"></a></li>
+          </ul>
+        </div>
+        <div class="box">
+          <header class='main-title'>
+            <h1>График</h1>
+          </header>
+
+          <div class="wrapper">
+            <div id="container" style="min-width: 310px;
+height: 600px;
+margin: 0 auto;
+overflow-x: auto;
+width: 100%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="js/highcharts.js"></script>
+  <script src="js/exporting.js"></script>
+</html>
