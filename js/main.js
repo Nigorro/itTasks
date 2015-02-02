@@ -54,7 +54,7 @@ app.directive('multiselct', [function () {
       angular.element('select', element).on('change', function() { 
         var result = _.map(scope.items, function(code) {
           var temp =  _.findWhere(scope.select.$objects, { code: code });
-          temp.system = attrs.system;
+          temp.system = 'urn:' + code + ':' + attrs.system;
           return temp;
         });
 
